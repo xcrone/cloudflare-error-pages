@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verification Required</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 50%, #ecfdf5 100%);
+      color: #1a1a2e;
+      padding: 24px;
+    }
+    
+    .container {
+      text-align: center;
+      max-width: 520px;
+      animation: fadeInUp 0.6s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .icon-wrapper {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 32px;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 60px -10px rgba(16, 185, 129, 0.4);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 20px 60px -10px rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 20px 80px -10px rgba(16, 185, 129, 0.6); }
+    }
+    
+    .icon-wrapper svg {
+      width: 56px;
+      height: 56px;
+      color: white;
+    }
+    
+    .error-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    
+    .error-subtitle {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+    
+    .error-message {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    
+    .challenge-box {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    
+    .challenge-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #047857;
+      margin-bottom: 16px;
+    }
+    
+    .loading-bar {
+      height: 4px;
+      background: rgba(16, 185, 129, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    
+    .loading-bar-inner {
+      height: 100%;
+      width: 30%;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      border-radius: 2px;
+      animation: loading 2s ease-in-out infinite;
+    }
+    
+    @keyframes loading {
+      0% { width: 0%; margin-left: 0%; }
+      50% { width: 50%; margin-left: 25%; }
+      100% { width: 0%; margin-left: 100%; }
+    }
+    
+    .challenge-text {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .checkbox-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: white;
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 16px;
+    }
+    
+    .checkbox-wrapper:hover {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+    
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #10b981;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .checkbox svg {
+      width: 16px;
+      height: 16px;
+      color: #10b981;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    
+    .checkbox-wrapper:hover .checkbox svg {
+      opacity: 0.5;
+    }
+    
+    .checkbox-label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1a1a2e;
+    }
+    
+    .footer-text {
+      margin-top: 24px;
+      font-size: 0.875rem;
+      color: #9ca3af;
+    }
+    
+    .footer-text a {
+      color: #10b981;
+      text-decoration: none;
+    }
+    
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    </div>
+    <h1 class="error-title">Verification Required</h1>
+    <h2 class="error-subtitle">Checking your connection</h2>
+    <p class="error-message">
+      We need to verify that you're not a robot before granting access.
+    </p>
+    <div class="challenge-box">
+      <h3>Security Check in Progress</h3>
+      <div class="loading-bar">
+        <div class="loading-bar-inner"></div>
+      </div>
+      <p class="challenge-text">Verifying your browser and IP address...</p>
+      <!-- <div class="checkbox-wrapper">
+        <div class="checkbox">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <span class="checkbox-label">I'm not a robot</span>
+      </div> -->
+      ::CAPTCHA_BOX::
+    </div>
+    <p class="footer-text">
+      This check is automatic. If you're having trouble, <a href="mailto:tech@supplycart.my">contact support</a>.
+    </p>
+  </div>
+</body>
+</html>
